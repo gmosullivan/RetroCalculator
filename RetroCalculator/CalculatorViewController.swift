@@ -27,7 +27,7 @@ class CalculatorViewController: UIViewController {
     var initialValue = ""
     var additionalValue = ""
     var result = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
