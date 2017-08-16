@@ -67,6 +67,9 @@ class CalculatorViewController: UIViewController {
     @IBAction func equalBtnPressed(sender: AnyObject) {
         processOperation(operation: currentOperation)
     }
+    @IBAction func clearBtnPressed(sender: AnyObject) {
+        resetValues()
+    }
     
     func playSound() {
         if btnSound.isPlaying {
@@ -78,7 +81,7 @@ class CalculatorViewController: UIViewController {
     func processOperation(operation: Operation) {
         playSound()
         if currentOperation != Operation.Empty {
-            if runningNumber != "" {
+            if runningNumber != "" && initialValue != "" {
                 additionalValue = runningNumber
                 runningNumber = ""
                 if currentOperation == Operation.Divide {
@@ -99,6 +102,16 @@ class CalculatorViewController: UIViewController {
             runningNumber = ""
             currentOperation = operation
         }
+    }
+    
+    func resetValues() {
+        playSound()
+        runningNumber = ""
+        currentOperation = Operation.Empty
+        initialValue = ""
+        additionalValue = ""
+        result = ""
+        outputLabel.text = "0"
     }
 
 
